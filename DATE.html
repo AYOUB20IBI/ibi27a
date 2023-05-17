@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    body {
+        background-image: linear-gradient(#0000009e, #e3828236, #000000c2), linear-gradient(#000000d1, #ffb8006e, #000000e6), url(bg.jpg);
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: cover;
+        height: 100VH;
+    }
+
+    .container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 81.9vh;
+    }
+    #time{
+        font-size: 12rem;
+        font-family: fantasy;
+    }
+    #time span , #date span {
+        background: linear-gradient(#0000009e, #e3828236, #000000c2), linear-gradient(#000000d1, #ffb8006e, #000000e6), url(bg.jpg);
+        padding: 35px;
+        color: #fff;
+        border-radius: 7px;
+        filter: drop-shadow(2px 4px 6px black);
+    }
+    #date{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+    #date span{
+        font-size: 2rem;
+        font-family: cursive;
+        padding: 15px;
+    }
+    footer{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #FFF;
+        border-top: 1px solid #777;
+        height: 3.9vh;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    @media (max-width: 767px){
+        #time{
+            font-size: 2.5rem;
+        }
+        #time span{
+            padding: 20px;
+        }
+        #date span{
+            padding: 10px;
+        }
+
+    }
+</style>
+<body>
+    <div class="container">
+        <div id="time">
+            <span id="hours">12</span>
+            <span id="minuts">00</span>
+            <span id="second">00</span>
+            <span id="alayl_asabah"></span>
+        </div>
+
+    </div>
+    <div id="date">
+        <span id="days"></span>
+        <span id="months"></span>
+        <span id="years"></span>
+    </div>
+    <footer>
+        <p>© Ibi27a <span id="ibi"></span> All rights reserved.</p>
+    </footer>
+    
+    
+
+
+    <script>
+        setInterval(()=>{
+            let nowdate=new Date()
+            let hours=document.getElementById('hours');
+            let minuts=document.getElementById('minuts');
+            let second=document.getElementById('second');
+            let as=document.getElementById('alayl_asabah');
+            let ibi=document.getElementById('ibi');
+            let day=document.getElementById('days')
+            let month=document.getElementById('months')
+            let year=document.getElementById('years')
+            let alayl_asabah="AM"
+            let h=nowdate.getHours()
+            let m=nowdate.getMinutes()
+            let s=nowdate.getSeconds()
+            let y=nowdate.getFullYear()
+
+
+            let days = ["Dimanche", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi"];
+            let months = ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"];
+            let da = days[nowdate.getDay()];
+            let mo = months[nowdate.getMonth()];
+            let ye = nowdate.getFullYear();
+
+            day.textContent=da
+            month.textContent=mo
+            year.textContent=ye
+
+
+            if(h>12){
+                alayl_asabah="PM"
+                h=h-12
+            }
+            if(h<10){
+                h="0"+h
+            }
+            if(m<10){
+                m="0"+m
+            }
+            if(s<10){
+                s="0"+s
+            }
+
+            hours.textContent=h
+            minuts.textContent=m
+            second.textContent=s
+            as.textContent=alayl_asabah
+            ibi.textContent=y
+        })
+    </script>
+</body>
+</html>
